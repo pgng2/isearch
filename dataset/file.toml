@@ -1,0 +1,3 @@
+# file: file.toml
+type = "file-corpus"
+list = "files"
