@@ -58,7 +58,7 @@ Another limitation comes from the fact that autocomplete toolkit currently only 
 Presentation of the result can also be improved. Curses based presentation can be limited by the dimension of user's terminal. A typical terminal size is only 80x24 which does not give a lot of room to display autocomplete suggestions, search results and matching file content on the same screen. Web-based implementation of the isearch would likely help to minimize some of these problems.
 
 ## Changelog
-* 7-Dec-2018 initial version
+* 8-Dec-2018 initial version
 
 [metapy]: https://github.com/meta-toolkit/metapy
 [autocomplete]: https://github.com/rodricios/autocomplete
