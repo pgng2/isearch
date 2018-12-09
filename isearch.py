@@ -63,13 +63,26 @@ def process_pdf(dir_path):
 
 
 
+# Determine if a file is "text" file
+def isTextFile(file_path):
+    isText = False
+    file_cmd = which('file') # use the 'file command if available
+    if None == file_cmd:
+        isText = re.compile('(.*)\.txt').match(file_path) != None
+    else:
+        result = subprocess.Popen([ file_cmd, file_path ], stdout=subprocess.PIPE).stdout.read()
+        isText = re.compile('.*:.* text').match(result.decode().rstrip()) != None
+    return isText
+
+
+
+
 # Update the full-corpus.txt file
 def update_corpus_file(dataset_path, files_path):
     corpus_file = open(dataset_path+'files-full-corpus.txt', 'w+')
 
     for f in os.listdir(files_path):
-        isTxtfile = re.compile('(.*)\.txt').match(f)
-        if isTxtfile:
+        if isTextFile(os.path.join(files_path, f)):
             corpus_file.write('None '+os.path.relpath(files_path, dataset_path)+'/'+f+'\n')
 
     corpus_file.close()
